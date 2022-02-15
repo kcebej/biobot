@@ -4,26 +4,21 @@ import { useQuery } from "react-query";
 import { Container } from "@mui/material";
 
 import { Chart, CurrentStats } from ".";
-import { getCurrentStateData, getHistoricalStateData } from "../api";
+import { getHistoricalStateData } from "../api";
 
 export default function VizContainer() {
   const [state] = useQueryParam("state", StringParam);
 
-  const currentStateData = useQuery(
-    ["currentStateData", state],
-    () => getCurrentStateData(state),
-    { enabled: !!state }
-  );
-  const historicalStateData = useQuery(
-    ["historicalStateData", state],
+  const comboStateData = useQuery(
+    ["comboStateData", state],
     () => getHistoricalStateData(state),
     { enabled: !!state }
   );
 
   return (
     <Container maxWidth="xl">
-      <CurrentStats {...currentStateData} />
-      <Chart {...historicalStateData} />
+      <CurrentStats {...comboStateData} />
+      <Chart {...comboStateData} />
     </Container>
   );
 }
