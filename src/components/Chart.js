@@ -27,7 +27,11 @@ const W = SVG_WIDTH - MARGINS.left - MARGINS.right;
 const TEXT_OFFSET = { x: 15, y: 25 };
 
 export default function Chart({ data, isError, isLoading }) {
-  const [column] = useQueryParam("column", withDefault(StringParam, "cases"));
+  /** TODO: factor out so that default is only defined once! */
+  const [column] = useQueryParam(
+    "column",
+    withDefault(StringParam, "newCases")
+  );
 
   if (isLoading) {
     return (

@@ -25,7 +25,7 @@ export const COLUMNS = [
 export default function Nav() {
   const [column, setColumn] = useQueryParam(
     "column",
-    withDefault(StringParam, "cases")
+    withDefault(StringParam, "newCases")
   );
   const [selectedState, setSelectedState] = useQueryParam("state", StringParam);
 

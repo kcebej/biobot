@@ -38,10 +38,10 @@ export default function CurrentStats({ data, isError, isLoading }) {
             component="h2"
             variant="h5"
           >{`Last updated ${data.lastUpdatedDate}`}</Typography>
-
           <Box sx={{ display: "flex", marginTop: "1rem" }}>
             {COLUMNS.map((column) => (
               <Typography
+                key={column}
                 sx={{ padding: "0.5rem 1.75rem 0.5rem 0rem" }}
                 variant="h6"
               >
